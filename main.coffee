@@ -36,15 +36,16 @@ if Meteor.isServer
         safeModeTimeout true
 
     setupSphero: ->
-      spheron = Meteor.require 'spheron'
-      @sphero = spheron.sphero()
-      spheroPort = '/dev/cu.Sphero-RYW-AMP-SPP'
-      COLORS = spheron.toolbelt.COLORS
+      console.log "should setup sphero"
+      # spheron = Meteor.require 'spheron'
+      # @sphero = spheron.sphero()
+      # spheroPort = '/dev/cu.Sphero-RYW-AMP-SPP'
+      # COLORS = spheron.toolbelt.COLORS
 
-      @sphero.on 'open', ->
-        @sphero.setRGB COLORS.BLUE, false
+      # @sphero.on 'open', ->
+      #   @sphero.setRGB COLORS.BLUE, false
 
-      @sphero.open spheroPort
+      # @sphero.open spheroPort
 
 
 
