@@ -1,1 +1,33 @@
 /* CSS declarations go here */
+@red: #da3765;
+@lightRed: #f3b4cb;
+@darkRed: #a92b4f;
+@teal: #44c0b4;
+@gray: #c0c0c0;
+
+body {
+  font-family: 'Exo';
+  background: url('images/backgroundtexture.png');
+  text-align: center;
+}
+
+h1 {
+  color: @red;
+}
+
+button {
+  width: 240px;
+  height: 50px;
+  background-color: @red;
+  border: 0;
+  border-radius: 5px;
+  color: @lightRed;
+  font-size: 1.4em;
+  box-shadow: 0 6px 0 0 @darkRed;
+  outline: none;
+}
+
+button:hover {
+  margin-top: 3px;
+  box-shadow: 0 3px 0 0 @darkRed;
+}
