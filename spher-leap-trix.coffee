@@ -1,19 +1,19 @@
-# if (Meteor.isClient) {
-#   Template.hello.greeting = function () {
-#     return "Welcome to spher-leap-trix.";
-#   };
+if (Meteor.isClient) {
+  Template.hello.greeting = function () {
+    return "Welcome to spher-leap-trix.";
+  };
 
-#   Template.hello.events({
-#     'click input': function () {
-#       // template data, if any, is available in 'this'
-#       if (typeof console !== 'undefined')
-#         console.log("You pressed the button");
-#     }
-#   });
-# }
+  Template.hello.events({
+    'click input': function () {
+      // template data, if any, is available in 'this'
+      if (typeof console !== 'undefined')
+        console.log("You pressed the button");
+    }
+  });
+}
 
-# if (Meteor.isServer) {
-#   Meteor.startup(function () {
-#     // code to run on server at startup
-#   });
-# }
+if (Meteor.isServer) {
+  Meteor.startup(function () {
+    // code to run on server at startup
+  });
+}
