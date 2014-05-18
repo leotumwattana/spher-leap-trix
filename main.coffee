@@ -1,11 +1,11 @@
+# Use this terminal command to find device id
 # ls /dev | grep -i sphero
 
 if Meteor.isClient
 
+  # =====================
   # Helper methods
-  handleKeyTapGesture = (gesture) ->
-    console.log "It's alive!!!"
-    Meteor.call 'moveSphero', 'FORWARD', 128
+  # =====================
 
   circleDirection = (gesture, frame) ->
     clockwise = false
@@ -18,16 +18,16 @@ if Meteor.isClient
       clockwise
     catch error
       console.log error
-    finally
 
+  handleKeyTapGesture = (gesture) ->
+    console.log "It's alive!!!"
+    Meteor.call 'moveSphero', 'FORWARD', 128
 
   handleCircleGesture = (gesture, frame) ->
     console.log "turning!!!"
     clockwise = circleDirection gesture, frame
-    if clockwise
-      Meteor.call 'changeHeading', 1
-    else
-      Meteor.call 'changeHeading', -1
+    angle = if clockwise then 1 else -1
+    Meteor.call 'changeHeading', angle
 
   setupLeapMotionForTapGesture = ->
     controller = Leap.loop { enableGestures: true }, (frame) ->
@@ -39,19 +39,31 @@ if Meteor.isClient
             when 'keyTap'
               handleKeyTapGesture(gesture)
 
+  # =====================
   # Meteor event handlers
+  # =====================
+
   Template.game.events
     'click #connect': ->
       Meteor.call 'setupSphero'
 
+  # =====================
   # Init code
+  # =====================
+
   setupLeapMotionForTapGesture()
 
 
 if Meteor.isServer
 
+  # =====================
+  # Variables
+  # =====================
   @heading = 0
 
+  # =====================
+  # Helper functions
+  # =====================
   delay = (ms, func) -> setTimeout func, ms
 
   Meteor.methods
